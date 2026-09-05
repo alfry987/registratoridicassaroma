@@ -8,4 +8,16 @@ const officialProductImages={
   'ItalRetail Spice T Plus':'https://italretail.it/gallery/product_spice-tfronte-310x310.png'
 };
 Object.entries(officialProductImages).forEach(([alt,src])=>{const img=document.querySelector(`img[alt="${alt}"]`);if(img){img.src=src;img.loading='lazy';img.referrerPolicy='no-referrer';}});
-const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Dove disponibili utilizziamo fotografie ufficiali pubblicate dai produttori. Caratteristiche, disponibilità e omologazioni possono variare in base alla versione.';
+
+// Collegamenti alle schede ufficiali dei produttori.
+const officialProductPages={
+  'Custom Fusion-N 2.0 RT':'https://www.custom.biz/it_IT/prodotto/hardware/Soluzioni-DC-POS/registratori-di-cassa-touch-screen/fusion-n-2-0-rt',
+  'Custom Windkey-N Lite RT':'https://www.custom.biz/it_IT/prodotto/hardware/Soluzioni-DC-POS/registratori-di-cassa/windkey-n-lite-rt',
+  'ItalRetail RT Next':'https://italretail.it/it/prodotti/registratori-telematici/',
+  'ItalRetail Spice T Plus':'https://italretail.it/it/prodotti/sistemi-evoluti-di-punto-cassa/spice-t-plus/',
+  'Axon Micrelec Helios Touch RT':'https://www.axonmicrelec.com/misuratori-fiscali-registratori-di-cassa/serie-helios-touch-rt',
+  'Axon Micrelec Helios Plus RT':'https://www.axonmicrelec.com/misuratori-fiscali-registratori-di-cassa/serie-helios-plus-rt'
+};
+Object.entries(officialProductPages).forEach(([alt,url])=>{const img=document.querySelector(`img[alt="${alt}"]`);const article=img?.closest('article');if(article&&!article.querySelector('.official-source')){const link=document.createElement('a');link.className='official-source';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Scheda ufficiale del produttore →';link.style.cssText='display:inline-block;margin-top:12px;font-size:.78rem;font-weight:800;text-decoration:none';article.querySelector('div')?.appendChild(link);}});
+
+const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Dove disponibili utilizziamo fotografie ufficiali pubblicate dai produttori. Le schede ufficiali sono collegate direttamente ai produttori; caratteristiche, disponibilità e omologazioni possono variare in base alla versione.';

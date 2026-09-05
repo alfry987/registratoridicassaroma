@@ -11,6 +11,8 @@ Object.entries(officialProductImages).forEach(([alt,src])=>{const img=document.q
 
 // Collegamenti alle schede ufficiali dei produttori.
 const officialProductPages={
+  'Epson FP-81II RT':'https://www.epson.it/it_IT/prodotti/stampanti/stampanti-pos/stampanti-pos/stampante-pos-(tm)/epson-fp-81ii-rt-(014je):-italy-fiscal,-ps,-lcd,-80mm,-k23,-e-rec,edg,ref/p/26827',
+  'Epson FP-90III RT':'https://www.epson.it/it_IT/prodotti/stampanti/stampanti-pos/stampanti-pos/stampante-pos-(tm)/epson-fp-90iii-rt-(012je):-italy-fiscal,-ps,-lcd,-80mm,-k23,-e-rec,edg,ref/p/26830',
   'Custom Fusion-N 2.0 RT':'https://www.custom.biz/it_IT/prodotto/hardware/Soluzioni-DC-POS/registratori-di-cassa-touch-screen/fusion-n-2-0-rt',
   'Custom Windkey-N Lite RT':'https://www.custom.biz/it_IT/prodotto/hardware/Soluzioni-DC-POS/registratori-di-cassa/windkey-n-lite-rt',
   'ItalRetail RT Next':'https://italretail.it/it/prodotti/registratori-telematici/',

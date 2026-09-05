@@ -23,18 +23,18 @@ const officialProductPages={
 };
 Object.entries(officialProductPages).forEach(([alt,url])=>{let article=[...document.querySelectorAll('#modelli article')].find(a=>a.textContent.includes(alt.replace('Axon Micrelec ','').replace('ItalRetail ',''))||a.querySelector(`img[alt="${alt}"]`));if(article&&!article.querySelector('.official-source')){const link=document.createElement('a');link.className='official-source';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Scheda ufficiale del produttore →';link.style.cssText='display:inline-block;margin-top:12px;font-size:.78rem;font-weight:800;text-decoration:none';article.querySelector('div')?.appendChild(link);}});
 
-// Marchi: asset ufficiali solo quando verificabili; nessuna ricostruzione viene presentata come ufficiale.
+// Manteniamo soltanto i due marchi approvati: Epson dal file presente nel sito e Custom da asset ufficiale del produttore.
 const officialBrandImages={
-  'Custom':'https://www.custom.biz/uploads/media/icon/0001/07/custom-logo-pittogramma-customblack-rgb.webp',
-  'Axon Micrelec':'https://www.axonmicrelec.com/sites/all/themes/axonmicrelec/css/img/LOGO.png',
-  'Think To IT':'https://www.think.to.it/newThinksw/images/thinksw2023/THINKTOIT%20LOGO%20BIANCO.png'
+  'Custom':'https://www.custom.biz/uploads/media/icon/0001/07/custom-logo-pittogramma-customblack-rgb.webp'
 };
-Object.entries(officialBrandImages).forEach(([alt,src])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);if(img){img.onerror=()=>{img.style.display='none';};img.src=src;if(alt==='Think To IT'){img.style.background='#111';img.style.padding='16px';img.style.boxSizing='border-box';}}});
+Object.entries(officialBrandImages).forEach(([alt,src])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);if(img){img.onerror=()=>{img.style.display='none';};img.src=src;}});
 
-// Per i marchi per cui non abbiamo ancora recuperato un file ufficiale diretto, rimuoviamo il vecchio logo ricostruito.
+// Gli altri quattro loghi vengono rimossi finché non recuperiamo esattamente le versioni approvate.
 const pendingBrandLabels={
   'ItalRetail Zucchetti':'ITALRETAIL · ZUCCHETTI',
-  'System Retail':'SYSTEM · EVOLUTION RETAIL'
+  'Axon Micrelec':'AXON MICRELEC',
+  'Think To IT':'THINK TO IT',
+  'System Retail':'SYSTEM RETAIL'
 };
 Object.entries(pendingBrandLabels).forEach(([alt,label])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);if(img){const article=img.closest('article');img.remove();if(article&&!article.querySelector('.pending-brand-label')){const text=document.createElement('div');text.className='pending-brand-label';text.textContent=label;text.style.cssText='min-height:92px;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-size:1rem;font-weight:900;letter-spacing:.04em';article.prepend(text);}}});
 

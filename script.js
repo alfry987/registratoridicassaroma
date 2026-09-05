@@ -24,4 +24,21 @@ const officialProductPages={
 };
 Object.entries(officialProductPages).forEach(([alt,url])=>{const img=document.querySelector(`img[alt="${alt}"]`);const article=img?.closest('article');if(article&&!article.querySelector('.official-source')){const link=document.createElement('a');link.className='official-source';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Scheda ufficiale del produttore →';link.style.cssText='display:inline-block;margin-top:12px;font-size:.78rem;font-weight:800;text-decoration:none';article.querySelector('div')?.appendChild(link);}});
 
+// Marchi: usiamo solo asset ufficiali quando il produttore espone un file verificabile.
+const officialBrandImages={
+  'Axon Micrelec':'https://www.axonmicrelec.com/sites/all/themes/axonmicrelec/css/img/LOGO.png',
+  'Think To IT':'https://www.think.to.it/newThinksw/images/thinksw2023/THINKTOIT%20LOGO%20BIANCO.png'
+};
+Object.entries(officialBrandImages).forEach(([alt,src])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);if(img){const fallback=img.getAttribute('src');img.onerror=()=>{img.onerror=null;img.src=fallback;};img.src=src;img.referrerPolicy='no-referrer';if(alt==='Think To IT'){img.style.background='#111';img.style.padding='16px';img.style.boxSizing='border-box';}}});
+
+const officialBrandPages={
+  'Epson':'https://www.epson.it/',
+  'Custom':'https://www.custom.biz/it_IT/',
+  'ItalRetail Zucchetti':'https://italretail.it/it/home/',
+  'Think To IT':'https://www.think.to.it/',
+  'System Retail':'https://www.systemretail.it/',
+  'Axon Micrelec':'https://www.axonmicrelec.com/'
+};
+Object.entries(officialBrandPages).forEach(([alt,url])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);const article=img?.closest('article');if(article&&!article.querySelector('.brand-official')){const link=document.createElement('a');link.className='brand-official';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Sito ufficiale →';link.style.cssText='display:inline-block;margin:0 18px 18px;font-size:.76rem;font-weight:800;text-decoration:none';article.appendChild(link);}});
+
 const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Per i modelli verificati utilizziamo fotografie e schede ufficiali pubblicate dai produttori. Caratteristiche, disponibilità e omologazioni possono variare in base alla versione.';

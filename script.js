@@ -9,7 +9,12 @@ const officialProductImages={
   'ItalRetail RT Next':'https://italretail.it/gallery/product_rt-next310x3102.png',
   'ItalRetail Spice T Plus':'https://italretail.it/gallery/product_spice-tfronte-310x310.png'
 };
-const modelImages=document.querySelectorAll('#modelli article img');modelImages.forEach(img=>{const alt=img.alt;const official=officialProductImages[alt];if(official){img.loading='lazy';img.onerror=()=>{img.style.display='none';};img.src=official;}else{img.remove();}});
+const pendingProductImages={
+  'Epson FP-81II RT':'Foto ufficiale in acquisizione',
+  'Custom Fusion-N 2.0 RT':'Foto ufficiale Custom in acquisizione',
+  'Custom Windkey-N Lite RT':'Foto ufficiale Custom in acquisizione'
+};
+const modelImages=document.querySelectorAll('#modelli article img');modelImages.forEach(img=>{const alt=img.alt;const official=officialProductImages[alt];if(official){img.loading='lazy';img.onerror=()=>{img.style.display='none';};img.src=official;}else{const article=img.closest('article');img.remove();if(article&&pendingProductImages[alt]&&!article.querySelector('.pending-product-photo')){const box=document.createElement('div');box.className='pending-product-photo';box.innerHTML=`<span>${pendingProductImages[alt]}</span><small>Nessuna immagine generica o da rivenditori</small>`;box.style.cssText='height:205px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:22px;text-align:center;background:#f5f6f7;border-bottom:1px solid #e5e7ea;color:#313942;font-weight:850';box.querySelector('small').style.cssText='font-size:.72rem;font-weight:650;color:#77818b';article.prepend(box);}}});
 
 // Collegamenti alle schede ufficiali dei produttori.
 const officialProductPages={
@@ -20,7 +25,7 @@ const officialProductPages={
   'ItalRetail RT Next':'https://italretail.it/it/prodotti/registratori-telematici/',
   'ItalRetail Spice T Plus':'https://italretail.it/it/prodotti/sistemi-evoluti-di-punto-cassa/spice-t-plus/'
 };
-Object.entries(officialProductPages).forEach(([alt,url])=>{let article=[...document.querySelectorAll('#modelli article')].find(a=>a.textContent.includes(alt.replace('ItalRetail ',''))||a.querySelector(`img[alt="${alt}"]`));if(article&&!article.querySelector('.official-source')){const link=document.createElement('a');link.className='official-source';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Scheda ufficiale del produttore →';link.style.cssText='display:inline-block;margin-top:12px;font-size:.78rem;font-weight:800;text-decoration:none';article.querySelector('div')?.appendChild(link);}});
+Object.entries(officialProductPages).forEach(([alt,url])=>{let article=[...document.querySelectorAll('#modelli article')].find(a=>a.textContent.includes(alt.replace('ItalRetail ',''))||a.querySelector(`img[alt="${alt}"]`));if(article&&!article.querySelector('.official-source')){const link=document.createElement('a');link.className='official-source';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Scheda ufficiale del produttore →';link.style.cssText='display:inline-block;margin-top:12px;font-size:.78rem;font-weight:800;text-decoration:none';article.querySelector('div:last-child')?.appendChild(link);}});
 
 // Manteniamo soltanto i due marchi approvati: Epson dal file presente nel sito e Custom da asset ufficiale del produttore.
 const officialBrandImages={
@@ -47,4 +52,4 @@ const officialBrandPages={
 };
 Object.entries(officialBrandPages).forEach(([alt,url])=>{let article=document.querySelector(`#marchi img[alt="${alt}"]`)?.closest('article');if(!article&&pendingBrandLabels[alt]){article=[...document.querySelectorAll('#marchi article')].find(a=>a.textContent.includes(pendingBrandLabels[alt]));}if(article&&!article.querySelector('.brand-official')){const link=document.createElement('a');link.className='brand-official';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Sito ufficiale →';link.style.cssText='display:inline-block;margin:0 18px 18px;font-size:.76rem;font-weight:800;text-decoration:none';article.appendChild(link);}});
 
-const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Griglia approvata a sei modelli: due Epson, due Custom e due ItalRetail. Mostriamo esclusivamente fotografie ufficiali verificate; dove il produttore non espone un asset diretto verificabile, non utilizziamo immagini di rivenditori o ricostruzioni.';
+const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Griglia approvata a sei modelli. Le schede Epson, Custom e ItalRetail rimandano ai produttori; mostriamo una fotografia solo quando l’asset del modello esatto è verificato, senza immagini di rivenditori o ricostruzioni.';

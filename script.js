@@ -31,6 +31,13 @@ const officialBrandImages={
 };
 Object.entries(officialBrandImages).forEach(([alt,src])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);if(img){img.onerror=()=>{img.style.display='none';};img.src=src;if(alt==='Think To IT'){img.style.background='#111';img.style.padding='16px';img.style.boxSizing='border-box';}}});
 
+// Per i marchi per cui non abbiamo ancora recuperato un file ufficiale diretto, rimuoviamo il vecchio logo ricostruito.
+const pendingBrandLabels={
+  'ItalRetail Zucchetti':'ITALRETAIL · ZUCCHETTI',
+  'System Retail':'SYSTEM · EVOLUTION RETAIL'
+};
+Object.entries(pendingBrandLabels).forEach(([alt,label])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);if(img){const article=img.closest('article');img.remove();if(article&&!article.querySelector('.pending-brand-label')){const text=document.createElement('div');text.className='pending-brand-label';text.textContent=label;text.style.cssText='min-height:92px;display:flex;align-items:center;justify-content:center;padding:18px;text-align:center;font-size:1rem;font-weight:900;letter-spacing:.04em';article.prepend(text);}}});
+
 const officialBrandPages={
   'Epson':'https://www.epson.it/',
   'Custom':'https://www.custom.biz/it_IT/',
@@ -39,6 +46,6 @@ const officialBrandPages={
   'System Retail':'https://www.systemretail.it/',
   'Axon Micrelec':'https://www.axonmicrelec.com/'
 };
-Object.entries(officialBrandPages).forEach(([alt,url])=>{const img=document.querySelector(`#marchi img[alt="${alt}"]`);const article=img?.closest('article');if(article&&!article.querySelector('.brand-official')){const link=document.createElement('a');link.className='brand-official';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Sito ufficiale →';link.style.cssText='display:inline-block;margin:0 18px 18px;font-size:.76rem;font-weight:800;text-decoration:none';article.appendChild(link);}});
+Object.entries(officialBrandPages).forEach(([alt,url])=>{let article=document.querySelector(`#marchi img[alt="${alt}"]`)?.closest('article');if(!article&&pendingBrandLabels[alt]){article=[...document.querySelectorAll('#marchi article')].find(a=>a.textContent.includes(pendingBrandLabels[alt]));}if(article&&!article.querySelector('.brand-official')){const link=document.createElement('a');link.className='brand-official';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Sito ufficiale →';link.style.cssText='display:inline-block;margin:0 18px 18px;font-size:.76rem;font-weight:800;text-decoration:none';article.appendChild(link);}});
 
 const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Mostriamo esclusivamente fotografie ufficiali verificate dei modelli. Quando il produttore non rende disponibile un asset diretto verificabile, non utilizziamo disegni o immagini di rivenditori.';

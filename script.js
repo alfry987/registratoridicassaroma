@@ -25,6 +25,7 @@ Object.entries(officialProductPages).forEach(([alt,url])=>{let article=[...docum
 
 // Marchi: asset ufficiali solo quando verificabili; nessuna ricostruzione viene presentata come ufficiale.
 const officialBrandImages={
+  'Custom':'https://www.custom.biz/uploads/media/icon/0001/07/custom-logo-pittogramma-customblack-rgb.webp',
   'Axon Micrelec':'https://www.axonmicrelec.com/sites/all/themes/axonmicrelec/css/img/LOGO.png',
   'Think To IT':'https://www.think.to.it/newThinksw/images/thinksw2023/THINKTOIT%20LOGO%20BIANCO.png'
 };

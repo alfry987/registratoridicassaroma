@@ -2,12 +2,14 @@ const menu=document.querySelector('#menu');const nav=document.querySelector('#na
 
 // Foto prodotto ufficiali pubblicate dai produttori.
 const officialProductImages={
+  'Epson FP-81II RT':'https://i8.amplience.net/i/epsonemear/fps90iii-large?%24product-xlarge%24=&fmt=auto',
+  'Epson FP-90III RT':'https://i8.amplience.net/i/epsonemear/fps90iii-large?%24product-xlarge%24=&fmt=auto',
   'Axon Micrelec Helios Touch RT':'https://www.axonmicrelec.com/sites/default/files/images/products/thumbnails/AxonMicrelec_HeliosTouch_01_1200x900.jpg',
   'Axon Micrelec Helios Plus RT':'https://www.axonmicrelec.com/sites/default/files/images/products/thumbnails/AxonMicrelec_HeliosPlus_01_1200x900.jpg',
   'ItalRetail RT Next':'https://italretail.it/gallery/product_rt-next310x3102.png',
   'ItalRetail Spice T Plus':'https://italretail.it/gallery/product_spice-tfronte-310x310.png'
 };
-Object.entries(officialProductImages).forEach(([alt,src])=>{const img=document.querySelector(`img[alt="${alt}"]`);if(img){img.src=src;img.loading='lazy';img.referrerPolicy='no-referrer';}});
+Object.entries(officialProductImages).forEach(([alt,src])=>{const img=document.querySelector(`img[alt="${alt}"]`);if(img){const fallback=img.getAttribute('src');img.loading='lazy';img.referrerPolicy='no-referrer';img.onerror=()=>{img.onerror=null;img.src=fallback;};img.src=src;}});
 
 // Collegamenti alle schede ufficiali dei produttori.
 const officialProductPages={
@@ -22,4 +24,4 @@ const officialProductPages={
 };
 Object.entries(officialProductPages).forEach(([alt,url])=>{const img=document.querySelector(`img[alt="${alt}"]`);const article=img?.closest('article');if(article&&!article.querySelector('.official-source')){const link=document.createElement('a');link.className='official-source';link.href=url;link.target='_blank';link.rel='noopener';link.textContent='Scheda ufficiale del produttore →';link.style.cssText='display:inline-block;margin-top:12px;font-size:.78rem;font-weight:800;text-decoration:none';article.querySelector('div')?.appendChild(link);}});
 
-const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Dove disponibili utilizziamo fotografie ufficiali pubblicate dai produttori. Le schede ufficiali sono collegate direttamente ai produttori; caratteristiche, disponibilità e omologazioni possono variare in base alla versione.';
+const modelNote=document.querySelector('#modelli .note');if(modelNote)modelNote.textContent='Per i modelli verificati utilizziamo fotografie e schede ufficiali pubblicate dai produttori. Caratteristiche, disponibilità e omologazioni possono variare in base alla versione.';

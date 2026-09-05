@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" role="img" aria-labelledby="t d"><title id="t">Longo</title><desc id="d">Logo Longo giallo nero e rosso fornito dal cliente</desc><rect width="1000" height="600" fill="#ffdc00"/><path d="M45 58h35v456h850V96H200V60h765v490H45z" fill="#050509"/><path d="M95 58h35v410h185v36H95z" fill="#e91b23"/><path d="M145 58h35v330h120v36H145z" fill="#050509"/><text x="300" y="385" font-family="Arial,Helvetica,sans-serif" font-size="245" font-weight="500" letter-spacing="-17" fill="#050509">Longo</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 614" role="img" aria-labelledby="title desc">
+<title id="title">Longo</title><desc id="desc">Logo Longo giallo, nero e rosso fornito dal cliente</desc>
+<rect width="1024" height="614" fill="#ffdc00"/>
+<!-- Cornice nera originale -->
+<rect x="44" y="60" width="37" height="490" fill="#050509"/>
+<rect x="44" y="513" width="934" height="37" fill="#050509"/>
+<rect x="940" y="60" width="38" height="490" fill="#050509"/>
+<rect x="200" y="60" width="778" height="38" fill="#050509"/>
+<!-- L rossa -->
+<rect x="96" y="60" width="35" height="416" fill="#ed1c24"/>
+<rect x="96" y="438" width="215" height="38" fill="#ed1c24"/>
+<!-- L nera interna -->
+<rect x="147" y="60" width="37" height="333" fill="#050509"/>
+<rect x="147" y="357" width="144" height="36" fill="#050509"/>
+<!-- Wordmark -->
+<text x="299" y="393" textLength="594" lengthAdjust="spacingAndGlyphs" font-family="Arial,Helvetica,sans-serif" font-size="281" font-weight="400" fill="#050509">Longo</text>
+</svg>

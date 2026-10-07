@@ -1,0 +1,2 @@
+# Do not commit ZIP backups or exported site snapshots.
+*.[zZ][iI][pP]

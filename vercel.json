@@ -1,6 +1,28 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "registratoridicassaroma.it"
+        }
+      ],
+      "destination": "https://www.registratoridicassaroma.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.registratoridicassaroma.it"
+        }
+      ],
+      "destination": "https://www.registratoridicassaroma.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/contatti",
       "destination": "/#contatti",
       "permanent": true

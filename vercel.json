@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/contatti",
+      "destination": "/#contatti",
+      "permanent": true
+    },
+    {
+      "source": "/contatti/",
+      "destination": "/#contatti",
+      "permanent": true
+    }
+  ]
+}

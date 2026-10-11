@@ -63,6 +63,36 @@
       "source": "/marchi/",
       "destination": "/#marchi",
       "permanent": true
+    },
+    {
+      "source": "/registratori-di-cassa",
+      "destination": "/registratori-di-cassa-roma.html",
+      "permanent": true
+    },
+    {
+      "source": "/registratori-di-cassa/",
+      "destination": "/registratori-di-cassa-roma.html",
+      "permanent": true
+    },
+    {
+      "source": "/assistenza",
+      "destination": "/assistenza-registratori-roma-provincia.html",
+      "permanent": true
+    },
+    {
+      "source": "/assistenza/",
+      "destination": "/assistenza-registratori-roma-provincia.html",
+      "permanent": true
+    },
+    {
+      "source": "/sistemi-touch-e-gestionali",
+      "destination": "/software-gestionali-roma.html",
+      "permanent": true
+    },
+    {
+      "source": "/sistemi-touch-e-gestionali/",
+      "destination": "/software-gestionali-roma.html",
+      "permanent": true
     }
   ]
 }

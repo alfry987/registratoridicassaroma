@@ -53,6 +53,16 @@
       "source": "/contatti/",
       "destination": "/#contatti",
       "permanent": true
+    },
+    {
+      "source": "/marchi",
+      "destination": "/#marchi",
+      "permanent": true
+    },
+    {
+      "source": "/marchi/",
+      "destination": "/#marchi",
+      "permanent": true
     }
   ]
 }

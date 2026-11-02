@@ -93,6 +93,11 @@
       "source": "/sistemi-touch-e-gestionali/",
       "destination": "/software-gestionali-roma.html",
       "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
